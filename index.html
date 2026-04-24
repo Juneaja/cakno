@@ -1,0 +1,416 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mie Ayam Cak No!</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #ff6b6b, #feca57);
+            color: white;
+            padding: 1rem 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .whatsapp-btn {
+            background: #25D366;
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.3s;
+        }
+
+        .whatsapp-btn:hover {
+            background: #128C7E;
+            transform: translateY(-2px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23f8f9fa" width="1200" height="600"/><circle fill="%23ff6b6b" opacity="0.3" cx="200" cy="150" r="100"/><circle fill="%23feca57" opacity="0.3" cx="800" cy="200" r="120"/><circle fill="%2345b7d1" opacity="0.3" cx="1000" cy="400" r="80"/></svg>');
+            background-size: cover;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: white;
+            margin-top: 70px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+
+        .cta-button {
+            background: #25D366;
+            color: white;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s;
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+
+        .cta-button:hover {
+            background: #128C7E;
+            transform: scale(1.05);
+        }
+
+        /* Menu Section */
+        .menu {
+            padding: 100px 0;
+            background: #f8f9fa;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #333;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+
+        .menu-item {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .menu-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .menu-item img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            border: 4px solid #ff6b6b;
+        }
+
+        .menu-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .price {
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ff6b6b;
+            margin: 1rem 0;
+        }
+
+        .order-btn {
+            background: linear-gradient(45deg, #ff6b6b, #feca57);
+            color: white;
+            padding: 12px 24px;
+            border: none;
+            border-radius: 25px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            width: 100%;
+        }
+
+        .order-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* Order Form */
+        .order-section {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .order-form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.1);
+            padding: 3rem;
+            border-radius: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+        }
+
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            background: rgba(255,255,255,0.9);
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .menu-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Floating WA Button */
+        .floating-wa {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            box-shadow: 0 4px 20px rgba(37,211,102,0.4);
+            z-index: 1000;
+            transition: all 0.3s;
+        }
+
+        .floating-wa:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 25px rgba(37,211,102,0.6);
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <i class="fa-solid fa-bowl-rice"></i> Mie Ayam Cak No
+            </div>
+            <a href="https://wa.me/6289602337878" class="whatsapp-btn" target="_blank">
+                <i class="fab fa-whatsapp"></i> Pesan Sekarang
+            </a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <h1>Mie Ayam Cak No</h1>
+            <p>Pesan sekarang dan dapatkan mie terlezat favoritmu dalam hitungan menit!</p>
+            <a href="https://wa.me/6289602337878?text=Saya%20mau%20pesan%20minuman" class="cta-button" target="_blank">
+                <i class="fab fa-whatsapp"></i> Pesan via WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section class="menu">
+        <div class="container">
+            <h2 class="section-title">Menu Mie Ayam Cakno</h2>
+            <div class="menu-grid">
+                <div class="menu-item">
+                    <img src=" " alt="mie ayam">
+                    <h3>Mie Ayam Biasa</h3>
+                    <div class="price">Rp 12.000</div>
+                    <button class="order-btn" onclick="orderNow('Mie Ayam Biasa - Rp 12.000')">Pesan</button>
+                </div>
+                <div class="menu-item">
+                    <img src=" " alt="mie ayam ceker">
+                    <h3>Mie Ayam Ceker</h3>
+                    <div class="price">Rp 15.000</div>
+                    <button class="order-btn" onclick="orderNow('Mie Ayam Ceker - Rp 15.000')">Pesan</button>
+                </div>
+                <div class="menu-item">
+                    <img src=" " alt="mie ayam kepala">
+                    <h3>Mie Ayam Kepala</h3>
+                    <div class="price">Rp 15.000</div>
+                    <button class="order-btn" onclick="orderNow('Mie Ayam Kepala - Rp 15.000')">Pesan</button>
+                </div>
+                <div class="menu-item">
+                    <img src=" " alt="mie ayam telur">
+                    <h3>Mie Ayam Telur</h3>
+                    <div class="price">Rp 15.000</div>
+                    <button class="order-btn" onclick="orderNow('Mie Ayam Telur - Rp 15.000')">Pesan</button>
+                </div>
+                
+            </div>
+        </div>
+    </section>
+
+    <!-- Order Section -->
+    <section class="order-section">
+        <div class="container">
+            <h2 class="section-title">Pesan Cepat</h2>
+            <form class="order-form" id="orderForm">
+                <div class="form-group">
+                    <label>Nama</label>
+                    <input type="text" id="customerName" required>
+                </div>
+                <div class="form-group">
+                    <label>Alamat Pengiriman</label>
+                    <textarea id="address" rows="3" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Pesanan</label>
+                    <textarea id="orderDetails" rows="4" placeholder="Contoh: Es Teh Manis x2, Jus Jeruk x1" required></textarea>
+                </div>
+                <div class="form-group">
+                    <label>Catatan Tambahan</label>
+                    <textarea id="notes" rows="2" placeholder="Kurang manis, tambah es, dll"></textarea>
+                </div>
+                <button type="submit" class="cta-button" style="width: 100%; margin-top: 1rem;">
+                    <i class="fas fa-whatsapp"></i> Kirim Pesanan ke WhatsApp
+                </button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <img src="logo.png" width="100℅" alt="logo ngodingasik">
+            <img src="logo1.png" width="100℅" alt="logo ngodingasik">
+            <p>&copy; 2026 Ngoding_asik. Pesan sekarang via WhatsApp!</p>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/6289602337878?text=Halo%20admin,%20saya%20ingin%20pesan%20minuman" class="floating-wa" target="_blank" title="Chat WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script>
+        // Ganti nomor WA dengan nomor Anda (format internasional)
+        const WA_NUMBER = '6289602337878'; // Ganti dengan nomor WA Anda
+
+        function orderNow(item) {
+            const name = document.getElementById('customerName').value || 'Pelanggan';
+            const message = `Halo admin!%0A%0ANama: ${name}%0APesanan: ${item}%0A%0ATerima kasih!`;
+            window.open(`https://wa.me/${WA_NUMBER}?text=${message}`, '_blank');
+        }
+
+        document.getElementById('orderForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('customerName').value;
+            const address = document.getElementById('address').value;
+            const orderDetails = document.getElementById('orderDetails').value;
+            const notes = document.getElementById('notes').value || 'Tidak ada catatan';
+
+            const message = `Halo admin!%0A%0A*Pesanan Baru*%0ANama:%20${name}%0AAlamat:%20${address}%0APesanan:%20${orderDetails}%0ACatatan:%20${notes}%0A%0ATerima kasih!`;
+            
+            window.open(`https://wa.me/${WA_NUMBER}?text=${message}`, '_blank');
+            
+            // Reset form
+            this.reset();
+        });
+
+        // Smooth scrolling untuk link internal
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
